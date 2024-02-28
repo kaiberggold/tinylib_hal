@@ -53,14 +53,14 @@
       constexpr std::uint8_t pine   = 0x0CU + sfr_offset;
 
       //Bits
-      constexpr std::uint8_t bit0  = 1U;
-      constexpr std::uint8_t bit1  = 1U << 1U;
-      constexpr std::uint8_t bit2  = 1U << 2U;
-      constexpr std::uint8_t bit3  = 1U << 3U;
-      constexpr std::uint8_t bit4  = 1U << 4U;
-      constexpr std::uint8_t bit5  = 1U << 5U;
-      constexpr std::uint8_t bit6  = 1U << 6U;
-      constexpr std::uint8_t bit7  = 1U << 7U;
+      constexpr std::array<std::uint8_t, 8>pbits= {1U, 
+                                                  1U << 1U,
+                                                  1U << 2U,
+                                                  1U << 3U,
+                                                  1U << 4U,
+                                                  1U << 5U,
+                                                  1U << 6U,
+                                                  1U << 7U};
       
     }
    }

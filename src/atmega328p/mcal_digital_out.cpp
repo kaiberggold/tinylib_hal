@@ -5,10 +5,10 @@
   {
     if (value)
     {
-        *reinterpret_cast<volatile std::uint8_t*>(mcal::r::portb)|=static_cast<std::uint8_t>(mcal::r::bit5);
+        *reinterpret_cast<volatile std::uint8_t*>(mcal::r::portb)|=static_cast<std::uint8_t>(mcal::r::pbits[bit]);
     }
     else
     {
-        *reinterpret_cast<volatile std::uint8_t*>(mcal::r::portb)&=static_cast<std::uint8_t>(~mcal::r::bit5);
+        *reinterpret_cast<volatile std::uint8_t*>(mcal::r::portb)&=static_cast<std::uint8_t>(~mcal::r::pbits[bit]);
     }
   }   

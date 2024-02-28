@@ -17,9 +17,9 @@ namespace mcal
             McalDigitalOut(const mcal::r::port_type p, const std::uint8_t b):port_id(p), bit(b)
             {
                //Set port value to 0
-               *reinterpret_cast<volatile std::uint8_t*>(mcal::r::portb)&=static_cast<std::uint8_t>(~mcal::r::bit5);
+               *reinterpret_cast<volatile std::uint8_t*>(mcal::r::portb)&=static_cast<std::uint8_t>(~mcal::r::pbits[bit]);
                //set to output
-               *reinterpret_cast<volatile std::uint8_t*>(mcal::r::ddr[port_id])|=mcal::r::bit5;
+               *reinterpret_cast<volatile std::uint8_t*>(mcal::r::ddr[port_id])|=mcal::r::pbits[bit];
             }
             void set_bit(bool value) const;
         };
