@@ -12,7 +12,10 @@ namespace tlm
         template<typename addr_t, typename reg_t, const std::uint8_t port_idx>
         struct McalDigitalPort
         {
-            static void set_port(reg_t val);
+            static void set_port(reg_t val)
+            {
+                *reinterpret_cast<volatile addr_t*>(mcal::r::port[port_idx])=static_cast<reg_t>(val);
+            }
         };
     }
 
