@@ -4,6 +4,8 @@ set( sources
     src/atmega328p/mcal_usart.cpp
     src/atmega328p/mcal_digital_out.h
     src/atmega328p/mcal_digital_out.cpp
+    src/atmega328p/mcal_digital_port.h
+    src/atmega328p/mcal_digital_port.cpp
     include/mcal_utils.h
 )
 

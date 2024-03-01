@@ -72,6 +72,12 @@
                                                  0x0AU + sfr_offset,
                                                  0x0DU + sfr_offset};
 
+      constexpr std::array<std::uint8_t, 4> port={0x05U + sfr_offset,
+                                                 0x08U + sfr_offset,
+                                                 0x0BU + sfr_offset,
+                                                 0x0EU + sfr_offset};
+                                                 
+
       constexpr std::uint8_t ddrb   = 0x04U + sfr_offset;
       constexpr std::uint8_t portb  = 0x05U + sfr_offset;
       constexpr std::uint8_t pinb   = 0x03U + sfr_offset;

@@ -1,5 +1,5 @@
-#ifndef MMAL_DIGITAL_OUT
-  #define MMAL_DIGITAL_OUT
+#ifndef MCAL_DIGITAL_OUT
+  #define MCAL_DIGITAL_OUT
   #include <stdbool.h>
 #include <cstdint>
 #include <mcal_reg.h>
