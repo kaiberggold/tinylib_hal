@@ -2,10 +2,8 @@ set( sources
     src/atmega328p/mcal_reg.h
     src/atmega328p/mcal_usart.h
     src/atmega328p/mcal_usart.cpp
-    src/atmega328p/mcal_digital_out.h
-    src/atmega328p/mcal_digital_out.cpp
     src/atmega328p/mcal_digital_port.h
-    include/mcal_utils.h
+    src/atmega328p/mcal_utils.h
 )
 
 add_avr_library (mcal ${sources})

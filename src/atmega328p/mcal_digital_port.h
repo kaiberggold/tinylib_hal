@@ -16,6 +16,18 @@ namespace tlm
             {
                 *reinterpret_cast<volatile addr_t*>(mcal::r::port[port_idx])=static_cast<reg_t>(val);
             }
+            static reg_t get_port()
+            {
+                return *reinterpret_cast<volatile addr_t*>(mcal::r::port[port_idx]);
+            }
+            static void set_to_out_mask(reg_t val)
+            {
+                //Set port value to 0
+                *reinterpret_cast<volatile addr_t*>(mcal::r::port[port_idx])&=!(static_cast<reg_t>(val));
+                //set to output
+                *reinterpret_cast<volatile std::uint8_t*>(mcal::r::ddr[port_idx])|=static_cast<reg_t>(val);
+  
+            }
         };
     }
 
