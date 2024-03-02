@@ -2,6 +2,7 @@ set( sources
     src/atmega328p/mcal_reg.h
     src/atmega328p/mcal_usart.h
     src/atmega328p/mcal_usart.cpp
+    src/atmega328p/mcal_reg_access.h
     src/atmega328p/mcal_digital_port.h
     src/atmega328p/mcal_utils.h
 )

@@ -1,31 +1,22 @@
   #include "mcal_usart.h"
-  #include "mcal_reg.h"
-  #include "mcal_utils.h"
 
 
   void mcal::us::McalUsart::init(const std::uint32_t baud_rate)
   {
 
     using namespace mcal::r;
-    const std ::uint16_t ubrr=static_cast<std::uint16_t>((F_CPU+8U*baud_rate)/(16*baud_rate-1));
-    std::uint8_t ul = static_cast<uint8_t>(ubrr);
-    std::uint8_t ur = static_cast<uint8_t>(ubrr>>8U);
-    #define BAUD 9600
-    #define UBRR_VALUE (((F_CPU) + 8UL * (BAUD)) / (16UL * (BAUD)) -1UL)
-    #define UBRRH_VALUE (UBRR_VALUE >> 8)
-    #define UBRRL_VALUE (UBRR_VALUE & 0xff)
-    *reinterpret_cast<volatile std::uint8_t*>(UBRR0L) = UBRRL_VALUE;
-    *reinterpret_cast<volatile std::uint8_t*>(UBRR0H) = UBRRH_VALUE;
-
-
+    const std ::uint16_t ubrr=static_cast<std::uint16_t>(((F_CPU) + UINT32_C(8) * (baud_rate)) / (UINT32_C(16) * (baud_rate)) -UINT32_C(1));
+    std::uint8_t ul = static_cast<uint8_t>(ubrr&UINT16_C(0x00FF));
+    std::uint8_t uh = static_cast<uint8_t>(ubrr>>8U);
+    ubrr0l.set_reg(ul);
+    ubrr0h.set_reg(uh);
+    
     const std::uint8_t U2X0 = 1;
-    *reinterpret_cast<volatile std::uint8_t*>(UCSR0A) &= ~(1 << U2X0);
-    
-    
-    *reinterpret_cast<volatile std::uint8_t*>(UCSR0B) = (1 << TXEN0) | (1 << RXEN0);
-    // 8 data bits, 1 stop bit
-    *reinterpret_cast<volatile std::uint8_t*>(UCSR0C) = (1 << UCSZ01) | (1 << UCSZ00); 
-  }   
+    ucsr0a.set_reg_and((1 << U2X0));
+    ucsr0b.set_reg((1 << TXEN0) | (1 << RXEN0));
+    ucsr0c.set_reg((1 << UCSZ01) | (1 << UCSZ00));
+      
+  }
 
   void mcal::us::McalUsart::transmit_byte_no_blocking(std::uint8_t data)
   {
