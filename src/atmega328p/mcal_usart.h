@@ -9,18 +9,14 @@
 #include "mcal_utils.h"
 #include <cstdint>
 
-namespace mcal
+namespace hal
 {
-    namespace us
-    {
-        class McalUsart
-        {
+    class McalUsart
+       {
         private:
-            tlm::rac::McalRegAccess<std::uint8_t, std::uint8_t,mcal::r::UCSR0A> ucsr0a;
-            tlm::rac::McalRegAccess<std::uint8_t, std::uint8_t,mcal::r::UCSR0B> ucsr0b;
-            tlm::rac::McalRegAccess<std::uint8_t, std::uint8_t,mcal::r::UCSR0C> ucsr0c;
-            tlm::rac::McalRegAccess<std::uint8_t, std::uint8_t,mcal::r::UBRR0L> ubrr0l;
-            tlm::rac::McalRegAccess<std::uint8_t, std::uint8_t,mcal::r::UBRR0H> ubrr0h;
+    
+            
+
             
             
         public:
@@ -29,7 +25,6 @@ namespace mcal
             void transmit_byte_no_blocking(std::uint8_t data);
             bool buffer_is_empty();
         };
-    }
 
 }
 #endif // MCAL_USART

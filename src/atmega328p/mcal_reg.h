@@ -5,10 +5,8 @@
   #include <array>
   
 
-  namespace mcal
+  namespace hal
   {
-    namespace r
-    {
       enum port_type: std::int8_t
       {
           port_b,
@@ -105,6 +103,5 @@
                                                   1U << 7U};
       
     }
-   }
 
 #endif // MCAL_REG

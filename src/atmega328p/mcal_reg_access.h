@@ -4,10 +4,8 @@
 #include <cstdint>
 #include <mcal_reg.h>
 
-namespace tlm
+namespace hal
 {
-    namespace rac
-    {
         template<typename addr_t, typename reg_t, addr_t addr>
         struct McalRegAccess
         {
@@ -15,7 +13,7 @@ namespace tlm
             {
                 *reinterpret_cast<volatile addr_t*>(addr)=static_cast<reg_t>(val);
             }
-            static void set_reg_and(reg_t val)
+            static void reg_and(reg_t val)
             {
                 *reinterpret_cast<volatile addr_t*>(addr)&=static_cast<reg_t>(val);
             }
@@ -23,8 +21,13 @@ namespace tlm
             {
                 return *reinterpret_cast<volatile addr_t*>(addr);
             }
+             static void set_bits(reg_t val1, reg_t val2)
+            {
+                *reinterpret_cast<volatile addr_t*>(addr)|=static_cast<reg_t>(1U << val1|1U<<val2);
+            }
         };
-    }
-
 }
+
+
+
 #endif // MCAL_REG_ACCESS
