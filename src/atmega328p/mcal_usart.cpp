@@ -1,6 +1,7 @@
 #include "mcal_usart.h"
 
-void hal::McalUsart::init(const std::uint32_t baud_rate) {
+void hal::McalUsart::init(const std::uint32_t baud_rate)
+{
 
   const std ::uint16_t ubrr = static_cast<std::uint16_t>(
       ((F_CPU) + UINT32_C(8) * (baud_rate)) / (UINT32_C(16) * (baud_rate)) -
@@ -19,12 +20,15 @@ void hal::McalUsart::init(const std::uint32_t baud_rate) {
       hal::UCSZ01, hal::UCSZ00);
 }
 
-void hal::McalUsart::transmit_byte_no_blocking(std::uint8_t data) {
-  if (this->buffer_is_empty()) {
+void hal::McalUsart::transmit_byte_no_blocking(std::uint8_t data)
+{
+  if (this->buffer_is_empty())
+  {
     mcal::set_reg(hal::UDR0, data);
   }
 }
 
-bool hal::McalUsart::buffer_is_empty() {
+bool hal::McalUsart::buffer_is_empty()
+{
   return (mcal::get_bit(hal::UCSR0A, hal::UDRE0));
 }
