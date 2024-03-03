@@ -20,11 +20,12 @@ namespace hal
     }
     static reg_t get_reg() { return *reinterpret_cast<volatile addr_t *>(addr); }
 
+    // perfect forwarding of paramters, since unpacking only for the bits
     template <typename... Pos>
     static void set_bits(Pos &&...pos)
     {
       *reinterpret_cast<volatile addr_t *>(addr) |=
-          static_cast<reg_t>(mcal::bit_mask(std::forward<Pos>(pos)...));
+          static_cast<reg_t>(hal::bit_mask(std::forward<Pos>(pos)...));
     }
   };
 

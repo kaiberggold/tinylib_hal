@@ -24,11 +24,11 @@ void hal::McalUsart::transmit_byte_no_blocking(std::uint8_t data)
 {
   if (this->buffer_is_empty())
   {
-    mcal::set_reg(hal::UDR0, data);
+    hal::set_reg(hal::UDR0, data);
   }
 }
 
 bool hal::McalUsart::buffer_is_empty()
 {
-  return (mcal::get_bit(hal::UCSR0A, hal::UDRE0));
+  return static_cast<bool>((hal::get_bit(hal::UCSR0A, hal::UDRE0)));
 }

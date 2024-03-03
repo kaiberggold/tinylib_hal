@@ -2,7 +2,7 @@
 #define MCAL_UTILS
 #include <cstdint>
 
-namespace mcal
+namespace hal
 {
   template <typename T>
   T bit_mask(T pos_0)
@@ -10,8 +10,8 @@ namespace mcal
     return (1 << pos_0);
   }
 
-  template <typename T, typename... pos>
-  T bit_mask(T pos_0, pos... pos_n)
+  template <typename T, typename... Pos>
+  T bit_mask(T pos_0, Pos... pos_n)
   {
     return (1 << pos_0) | bit_mask(pos_n...);
   }
