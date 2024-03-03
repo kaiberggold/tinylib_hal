@@ -20,17 +20,11 @@ namespace hal
     }
     static reg_t get_reg() { return *reinterpret_cast<volatile addr_t *>(addr); }
 
-    template <typename... pos>
-    static void set_bits(reg_t bit_0, pos... pos_0n)
+    template <typename... Pos>
+    static void set_bits(Pos &&...pos)
     {
       *reinterpret_cast<volatile addr_t *>(addr) |=
-          static_cast<reg_t>(mcal::bit_mask(pos_0n...));
-    }
-
-    static void set_bits_old(reg_t val1, reg_t val2)
-    {
-      *reinterpret_cast<volatile addr_t *>(addr) |=
-          static_cast<reg_t>(1U << val1 | 1U << val2);
+          static_cast<reg_t>(mcal::bit_mask(std::forward<Pos>(pos)...));
     }
   };
 
