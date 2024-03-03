@@ -26,8 +26,6 @@ namespace hal
                 *reinterpret_cast<volatile addr_t*>(addr)|=static_cast<reg_t>(1U << val1|1U<<val2);
             }
         };
+
 }
-
-
-
 #endif // MCAL_REG_ACCESS
