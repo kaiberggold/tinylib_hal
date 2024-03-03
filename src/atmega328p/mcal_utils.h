@@ -1,7 +1,27 @@
+#ifndef MCAL_UTILS
+#define MCAL_UTILS
 #include <cstdint>
 
 namespace mcal
 {
+  template <typename T>
+  T bit_mask(T pos_0)
+  {
+    return (1 << pos_0);
+  }
+
+  template <typename T, typename... pos>
+  T bit_mask(T pos_0, pos... pos_n)
+  {
+    return (1 << pos_0) | bit_mask(pos_n...);
+  }
+
+  // template <typename T, typename... Position>
+  // T &write_one(T &x, Position... pos0_n)
+  // {
+  //  x |= bit_mask(pos0_n...);
+  ////  return x;
+
   static std::uint8_t get_reg(std::uint8_t address)
   {
     return *reinterpret_cast<volatile std::uint8_t *>(address);
@@ -18,3 +38,4 @@ namespace mcal
         static_cast<std::uint8_t>(data);
   }
 } // namespace mcal
+#endif // MCAL_UTILS

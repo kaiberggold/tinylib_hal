@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <mcal_reg.h>
 #include <stdbool.h>
+#include "mcal_utils.h"
 
 namespace hal
 {
@@ -18,7 +19,15 @@ namespace hal
       *reinterpret_cast<volatile addr_t *>(addr) &= static_cast<reg_t>(val);
     }
     static reg_t get_reg() { return *reinterpret_cast<volatile addr_t *>(addr); }
-    static void set_bits(reg_t val1, reg_t val2)
+
+    template <typename... pos>
+    static void set_bits(reg_t bit_0, pos... pos_0n)
+    {
+      *reinterpret_cast<volatile addr_t *>(addr) |=
+          static_cast<reg_t>(mcal::bit_mask(pos_0n...));
+    }
+
+    static void set_bits_old(reg_t val1, reg_t val2)
     {
       *reinterpret_cast<volatile addr_t *>(addr) |=
           static_cast<reg_t>(1U << val1 | 1U << val2);
