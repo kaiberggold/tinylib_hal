@@ -18,6 +18,15 @@ namespace hal
     {
       *reinterpret_cast<volatile addr_t *>(addr) &= static_cast<reg_t>(val);
     }
+    static void reg_or(reg_t val)
+    {
+      *reinterpret_cast<volatile addr_t *>(addr) |= static_cast<reg_t>(val);
+    }
+    static void reg_xor(reg_t val)
+    {
+      *reinterpret_cast<volatile addr_t *>(addr) ^= static_cast<reg_t>(val);
+    }
+
     static reg_t get_reg() { return *reinterpret_cast<volatile addr_t *>(addr); }
 
     // perfect forwarding of paramters, since unpacking only for the bits
