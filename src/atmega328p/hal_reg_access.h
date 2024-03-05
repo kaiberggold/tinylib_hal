@@ -1,14 +1,14 @@
 #ifndef MCAL_REG_ACCESS
 #define MCAL_REG_ACCESS
 #include <cstdint>
-#include <mcal_reg.h>
+#include <hal_reg.h>
 #include <stdbool.h>
-#include "mcal_utils.h"
+#include "hal_utils.h"
 
 namespace hal
 {
   template <typename addr_t, typename reg_t, addr_t addr>
-  struct McalRegAccess
+  struct HalRegAccess
   {
     static void set_reg(reg_t val)
     {

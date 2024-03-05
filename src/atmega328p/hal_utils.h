@@ -1,5 +1,5 @@
-#ifndef MCAL_UTILS
-#define MCAL_UTILS
+#ifndef HAL_UTILS
+#define HAL_UTILS
 #include <cstdint>
 
 namespace hal
@@ -37,5 +37,5 @@ namespace hal
     *reinterpret_cast<volatile std::uint8_t *>(address) =
         static_cast<std::uint8_t>(data);
   }
-} // namespace mcal
+} // namespace hal
 #endif // MCAL_UTILS

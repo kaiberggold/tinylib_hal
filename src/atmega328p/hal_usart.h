@@ -1,16 +1,16 @@
-#ifndef MCAL_USART
-#define MCAL_USART
+#ifndef HAL_USART
+#define HAL_USART
 
-#include "mcal_digital_port.h"
-#include "mcal_reg.h"
-#include "mcal_reg_access.h"
-#include "mcal_utils.h"
+#include "hal_digital_port.h"
+#include "hal_reg.h"
+#include "hal_reg_access.h"
+#include "hal_utils.h"
 #include <array>
 #include <cstdint>
 
 namespace hal
 {
-  class McalUsart
+  class HalUsart
   {
   private:
   public:
@@ -20,4 +20,4 @@ namespace hal
   };
 
 } // namespace hal
-#endif // MCAL_USART
+#endif // HAL_USART

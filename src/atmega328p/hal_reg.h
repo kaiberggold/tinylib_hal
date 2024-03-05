@@ -1,5 +1,5 @@
-#ifndef MCAL_REG
-#define MCAL_REG
+#ifndef HAL_REG
+#define HAL_REG
 
 #include <array>
 #include <cstdint>
@@ -93,4 +93,4 @@ namespace hal
 
 } // namespace hal
 
-#endif // MCAL_REG
+#endif // HAL_REG
