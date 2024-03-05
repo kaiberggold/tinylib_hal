@@ -1,10 +1,10 @@
 set( sources
-    src/atmega328p/mcal_reg.h
-    src/atmega328p/mcal_usart.h
-    src/atmega328p/mcal_usart.cpp
-    src/atmega328p/mcal_reg_access.h
-    src/atmega328p/mcal_digital_port.h
-    src/atmega328p/mcal_utils.h
+    src/${HAL_PATH}/mcal_reg.h
+    src/${HAL_PATH}/mcal_usart.h
+    src/${HAL_PATH}/mcal_usart.cpp
+    src/${HAL_PATH}/mcal_reg_access.h
+    src/${HAL_PATH}/mcal_digital_port.h
+    src/${HAL_PATH}/mcal_utils.h
 )
 
 add_avr_library (mcal ${sources})
@@ -12,4 +12,4 @@ add_avr_library (mcal ${sources})
 target_include_directories (mcal PUBLIC include)
 # some .h files are in the src directory
 target_include_directories (mcal PUBLIC src)
-target_include_directories (mcal PUBLIC src/atmega328p)
+target_include_directories (mcal PUBLIC src/${HAL_PATH})
