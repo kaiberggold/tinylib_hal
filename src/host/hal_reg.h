@@ -6,13 +6,6 @@
 
 namespace hal
 {
-    enum port_type : std::int8_t
-    {
-        port_b,
-        port_c,
-        port_d,
-        port_e
-    };
 
     constexpr std::uint8_t sfr_offset = 0x20U;
     // USART
@@ -23,7 +16,7 @@ namespace hal
     constexpr std::uint8_t UBRR0H = 0xC5; // offset??
     constexpr std::uint8_t UDR0 = 0xC6;   // offset??
 
-    // bit values
+    // USART bit values
     constexpr std::uint8_t MPCM0 = 0U;
     constexpr std::uint8_t U2X0 = 1U;
     constexpr std::uint8_t UPE0 = 2u;
@@ -61,6 +54,38 @@ namespace hal
     constexpr std::uint8_t UDR0_5 = 5U;
     constexpr std::uint8_t UDR0_6 = 6U;
     constexpr std::uint8_t UDR0_7 = 7U;
+
+    // i2C
+    constexpr std::array<std::uint8_t, 1> TWBR = {0xB8};
+    constexpr std::array<std::uint8_t, 1> TWSR = {0xB9};
+    constexpr std::array<std::uint8_t, 1> TWCR = {0xBC};
+    constexpr std::array<std::uint8_t, 1> TWDR = {0xBB};
+
+    // I2c Bits
+    constexpr std::uint8_t TWIE = 0U;
+    constexpr std::uint8_t TWEN = 2U;
+    constexpr std::uint8_t TWWC = 3U;
+    constexpr std::uint8_t TWSTO = 4U;
+    constexpr std::uint8_t TWSTA = 5U;
+    constexpr std::uint8_t TWEA = 6U;
+    constexpr std::uint8_t TWINT = 7U;
+
+    constexpr std::uint8_t TWPS0 = 0U;
+    constexpr std::uint8_t TWPS1 = 1U;
+    constexpr std::uint8_t TWS3 = 3U;
+    constexpr std::uint8_t TWS4 = 4U;
+    constexpr std::uint8_t TWS5 = 5U;
+    constexpr std::uint8_t TWS6 = 6U;
+    constexpr std::uint8_t TWS7 = 7U;
+
+    constexpr std::uint8_t TTWD0 = 0U;
+    constexpr std::uint8_t TTWD1 = 1U;
+    constexpr std::uint8_t TTWD2 = 2U;
+    constexpr std::uint8_t TTWD3 = 3U;
+    constexpr std::uint8_t TTWD4 = 4U;
+    constexpr std::uint8_t TTWD5 = 5U;
+    constexpr std::uint8_t TTWD6 = 6U;
+    constexpr std::uint8_t TTWD7 = 7U;
 
     // ports
     constexpr std::array<std::uint8_t, 4> ddr = {

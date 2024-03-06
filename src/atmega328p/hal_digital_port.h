@@ -1,7 +1,7 @@
 #ifndef HAL_DIGITAL_PORT
 #define HAL_DIGITAL_PORT
 #include <cstdint>
-#include "hal_reg.h" 7
+#include "hal_reg.h"
 #include <hal_reg_access.h>
 #include <stdbool.h>
 
