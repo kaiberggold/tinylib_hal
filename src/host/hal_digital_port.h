@@ -1,11 +1,11 @@
-s #ifndef HAL_DIGITAL_PORT
+#ifndef HAL_DIGITAL_PORT
 #define HAL_DIGITAL_PORT
 #include <cstdint>
-#include "hal_reg.h" 7
+#include <hal_reg.h>
 #include <hal_reg_access.h>
 #include <stdbool.h>
 
-    namespace hal
+namespace hal
 {
   template <typename addr_t, typename reg_t, const std::uint8_t port_idx>
   struct HalDigitalPort : public HalRegAccess<addr_t, reg_t, port[port_idx]>
