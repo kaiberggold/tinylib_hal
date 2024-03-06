@@ -57,7 +57,9 @@ namespace hal
 
     // i2C
     constexpr std::array<std::uint8_t, 1> TWBR = {0xB8};
+    constexpr std::array<std::uint8_t, 1> TWSR = {0xB9};
     constexpr std::array<std::uint8_t, 1> TWCR = {0xBC};
+    constexpr std::array<std::uint8_t, 1> TWDR = {0xBB};
 
     // I2c Bits
     constexpr std::uint8_t TWIE = 0U;
@@ -67,6 +69,23 @@ namespace hal
     constexpr std::uint8_t TWSTA = 5U;
     constexpr std::uint8_t TWEA = 6U;
     constexpr std::uint8_t TWINT = 7U;
+
+    constexpr std::uint8_t TWPS0 = 0U;
+    constexpr std::uint8_t TWPS1 = 1U;
+    constexpr std::uint8_t TWS3 = 3U;
+    constexpr std::uint8_t TWS4 = 4U;
+    constexpr std::uint8_t TWS5 = 5U;
+    constexpr std::uint8_t TWS6 = 6U;
+    constexpr std::uint8_t TWS7 = 7U;
+
+    constexpr std::uint8_t TTWD0 = 0U;
+    constexpr std::uint8_t TTWD1 = 1U;
+    constexpr std::uint8_t TTWD2 = 2U;
+    constexpr std::uint8_t TTWD3 = 3U;
+    constexpr std::uint8_t TTWD4 = 4U;
+    constexpr std::uint8_t TTWD5 = 5U;
+    constexpr std::uint8_t TTWD6 = 6U;
+    constexpr std::uint8_t TTWD7 = 7U;
 
     // ports
     constexpr std::array<std::uint8_t, 4> ddr = {

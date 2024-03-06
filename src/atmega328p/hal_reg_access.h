@@ -10,7 +10,7 @@ namespace hal
   template <typename addr_t, typename reg_t, addr_t addr>
   struct HalRegAccess
   {
-    static void set_reg(reg_t val)
+    static void reg_set(reg_t val)
     {
       *reinterpret_cast<volatile addr_t *>(addr) = static_cast<reg_t>(val);
     }
@@ -31,10 +31,18 @@ namespace hal
 
     // perfect forwarding of paramters, since unpacking only for the bits
     template <typename... Pos>
-    static void set_bits(Pos &&...pos)
+    static void reg_set_bits(Pos &&...pos)
     {
       *reinterpret_cast<volatile addr_t *>(addr) |=
           static_cast<reg_t>(hal::bit_mask(std::forward<Pos>(pos)...));
+    }
+
+    // perfect forwarding of paramters, since unpacking only for the bits
+    template <typename... Pos>
+    static void reg_reset_bits(Pos &&...pos)
+    {
+      *reinterpret_cast<volatile addr_t *>(addr) &=
+          (!static_cast<reg_t>(hal::bit_mask(std::forward<Pos>(pos)...)));
     }
   };
 
