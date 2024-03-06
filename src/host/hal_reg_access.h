@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 
+extern std::array<std::uint8_t, 256> _registers;
 namespace hal
 
 {
