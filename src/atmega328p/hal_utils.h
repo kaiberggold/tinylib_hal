@@ -27,7 +27,7 @@ namespace hal
     return *reinterpret_cast<volatile std::uint8_t *>(address);
   }
 
-  static bool get_bit(std::uint8_t address, std::uint8_t bit_pos)
+  static bool reg_bit_set(std::uint8_t address, std::uint8_t bit_pos)
   {
     return static_cast<bool>(get_reg(address) & (1 << bit_pos));
   }
