@@ -6,10 +6,10 @@
 
 namespace hal
 {
-    template <typename addr_t, typename reg_t, const std::uint32_t freq, const std::uint8_t bus_idx>
+    template <typename addr_t, typename reg_t, reg_t bus_idx>
     struct HalI2CCom
     {
-        static void init()
+        static void init(std::uint32_t freq)
         {
             // Prescaler 1. TODO: adjustable prescalers
             HalRegAccess<addr_t, reg_t, hal::TWSR[bus_idx]>::reg_reset_bits(hal::TWPS0, hal::TWPS1);
