@@ -30,5 +30,5 @@ void hal::HalUsart::transmit_byte_no_blocking(std::uint8_t data)
 
 bool hal::HalUsart::buffer_is_empty()
 {
-  return static_cast<bool>((hal::get_bit(hal::UCSR0A, hal::UDRE0)));
+  return static_cast<bool>((hal::reg_bit_set(hal::UCSR0A, hal::UDRE0)));
 }
