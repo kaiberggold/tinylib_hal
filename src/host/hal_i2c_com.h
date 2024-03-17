@@ -35,8 +35,9 @@ namespace hal
 
         static bool transmission_active()
         {
-            // TODO: reg_bit_set()
-            return !hal::reg_bit_set(hal::TWCR[bus_idx], hal::TWINT);
+
+            // return !hal::reg_bit_set(hal::TWCR[bus_idx], hal::TWINT);
+            return false;
         }
     };
 
