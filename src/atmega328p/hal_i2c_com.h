@@ -33,7 +33,7 @@ namespace hal
             HalRegAccess<addr_t, reg_t, hal::TWCR[bus_idx]>::reg_set_bits(hal::TWINT, hal::TWEN);
         }
 
-        bool transmission_active()
+        static bool transmission_active()
         {
             // TODO: reg_bit_set()
             return !hal::reg_bit_set(hal::TWCR[bus_idx], hal::TWINT);
