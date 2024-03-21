@@ -12,7 +12,7 @@ namespace hal
         static void init(std::uint32_t freq)
         {
             // Prescaler 1. TODO: adjustable prescalers
-            HalRegAccess<addr_t, reg_t, hal::TWSR[bus_idx]>::reg_reset_bits(hal::TWPS0, hal::TWPS1);
+            // HalRegAccess<addr_t, reg_t, hal::TWSR[bus_idx]>::reg_reset_bits(hal::TWPS0, hal::TWPS1);
             // set speed. TODO: adjustable prescalers
             HalRegAccess<addr_t, reg_t, hal::TWBR[bus_idx]>::reg_set(static_cast<reg_t>(((F_CPU) / (freq)) - UINT32_C(16)) / UINT32_C(2));
             //  enable
