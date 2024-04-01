@@ -30,7 +30,7 @@ namespace hal
         static void send(reg_t data)
         {
             HalRegAccess<addr_t, reg_t, hal::TWDR[bus_idx]>::reg_set(static_cast<reg_t>(data));
-            HalRegAccess<addr_t, reg_t, hal::TWCR[bus_idx]>::reg_set_bits(hal::TWINT, hal::TWEN);
+            HalRegAccess<addr_t, reg_t, hal::TWCR[bus_idx]>::reg_set_bits_only(hal::TWINT, hal::TWEN);
         }
 
         static bool transmission_active()
