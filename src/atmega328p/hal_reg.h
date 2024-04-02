@@ -87,6 +87,34 @@ namespace hal
     constexpr std::uint8_t TTWD6 = 6U;
     constexpr std::uint8_t TTWD7 = 7U;
 
+    // spi
+    constexpr std::array<std::uint8_t, 1> SPCR = {0x2C + sfr_offset};
+    constexpr std::array<std::uint8_t, 1> SPSR = {0x2D + sfr_offset};
+    constexpr std::array<std::uint8_t, 1> SPDR = {0x2C + sfr_offset};
+
+    // spi bits
+    constexpr std::uint8_t SPR0 = 0U;
+    constexpr std::uint8_t SPR1 = 1U;
+    constexpr std::uint8_t CPHA = 2U;
+    constexpr std::uint8_t CPOL = 3U;
+    constexpr std::uint8_t MSTR = 4U;
+    constexpr std::uint8_t DORD = 5U;
+    constexpr std::uint8_t SPE = 6U;
+    constexpr std::uint8_t SPIE = 7U;
+
+    constexpr std::uint8_t SPI2X = 0U;
+    constexpr std::uint8_t WCOL = 6U;
+    constexpr std::uint8_t SPIF = 7U;
+
+    constexpr std::uint8_t SPDR0 = 0U;
+    constexpr std::uint8_t SPDR1 = 1U;
+    constexpr std::uint8_t SPDR2 = 2U;
+    constexpr std::uint8_t SPDR3 = 3U;
+    constexpr std::uint8_t SPDR4 = 4U;
+    constexpr std::uint8_t SPDR5 = 5U;
+    constexpr std::uint8_t SPDR6 = 6U;
+    constexpr std::uint8_t SPDR7 = 7U;
+
     // ports
     constexpr std::array<std::uint8_t, 4> ddr = {
         0x04U + sfr_offset, 0x07U + sfr_offset, 0x0AU + sfr_offset,

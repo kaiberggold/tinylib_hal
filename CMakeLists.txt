@@ -6,6 +6,7 @@ set( sources
     src/${HAL_PATH}/hal_digital_port.h
     src/${HAL_PATH}/hal_utils.h
     src/${HAL_PATH}/hal_i2c_com.h
+    src/${HAL_PATH}/hal_spi_com.h
 )
 
 add_avr_library (hal ${sources})
