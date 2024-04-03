@@ -71,24 +71,19 @@ namespace hal
             HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_set_bits(hal::MSTR, hal::SPE);
         }
 
-        static void start()
-        {
-            // HalRegAccess<addr_t, reg_t, hal::TWCR[bus_idx]>::reg_set_bits(hal::TWINT, hal::TWEN, hal::TWSTA);
-        }
-        static void stop()
-        {
-            // HalRegAccess<addr_t, reg_t, hal::TWCR[bus_idx]>::reg_set_bits(hal::TWINT, hal::TWEN, hal::TWSTO);
-        }
         static void send(reg_t data)
         {
-            // HalRegAccess<addr_t, reg_t, hal::TWDR[bus_idx]>::reg_set(static_cast<reg_t>(data));
-            // HalRegAccess<addr_t, reg_t, hal::TWCR[bus_idx]>::reg_set_bits_only(hal::TWINT, hal::TWEN);
+            HalRegAccess<addr_t, reg_t, hal::SPDR[bus_idx]>::reg_set(static_cast<reg_t>(data));
+        }
+
+        static reg_t read()
+        {
+            return HalRegAccess<addr_t, reg_t, hal::SPDR[bus_idx]>::get_reg();
         }
 
         static bool transmission_active()
         {
-            // TODO: reg_bit_set()
-            // return !hal::reg_bit_set(hal::TWCR[bus_idx], hal::TWINT);
+            return !hal::reg_bit_set(hal::SPSR[bus_idx], hal::SPIF);
         }
     };
 
