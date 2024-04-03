@@ -6,8 +6,50 @@
 
 namespace hal
 {
-
+    // offset
     constexpr std::uint8_t sfr_offset = 0x20U;
+
+    // port indices
+    constexpr std::uint8_t PORT_ID_B = 0U;
+    constexpr std::uint8_t PORT_ID_C = 1U;
+    constexpr std::uint8_t PORT_ID_D = 2U;
+    constexpr std::uint8_t PORT_ID_E = 3U;
+
+    // ports
+    constexpr std::array<std::uint8_t, 4> DDR = {
+        0x04U + sfr_offset, 0x07U + sfr_offset, 0x0AU + sfr_offset,
+        0x0DU + sfr_offset};
+
+    constexpr std::array<std::uint8_t, 4> PORT = {
+        0x05U + sfr_offset, 0x08U + sfr_offset, 0x0BU + sfr_offset,
+        0x0EU + sfr_offset};
+
+    constexpr std::array<std::uint8_t, 4> PIN = {
+        0x03U + sfr_offset, 0x06U + sfr_offset, 0x09U + sfr_offset,
+        0x0CU + sfr_offset};
+
+    // constexpr std::uint8_t DDRB = 0x04U + sfr_offset;
+    // constexpr std::uint8_t PORTB = 0x05U + sfr_offset;
+    // constexpr std::uint8_t PINB = 0x03U + sfr_offset;
+
+    // constexpr std::uint8_t DDRC = 0x07U + sfr_offset;
+    // constexpr std::uint8_t PORTC = 0x08U + sfr_offset;
+    // constexpr std::uint8_t PINC = 0x06U + sfr_offset;
+
+    // constexpr std::uint8_t DDRD = 0x0AU + sfr_offset;
+    // constexpr std::uint8_t PORTD = 0x0BU + sfr_offset;
+    // constexpr std::uint8_t PIND = 0x09U + sfr_offset;
+
+    // constexpr std::uint8_t DDRE = 0x0DU + sfr_offset;
+    // constexpr std::uint8_t PORTE = 0x0EU + sfr_offset;
+    // constexpr std::uint8_t PINE = 0x0CU + sfr_offset;
+
+    // Bits
+    constexpr std::array<std::array<std::uint8_t, 8>, 4> P = {{{0U, 1U, 2U, 3U, 4U, 5U, 6U, 7U},
+                                                               {0U, 1U, 2U, 3U, 4U, 5U, 6U, 7U},
+                                                               {0U, 1U, 2U, 3U, 4U, 5U, 6U, 7U},
+                                                               {0U, 1U, 2U, 3U, 4U, 5U, 6U, 7U}}};
+
     // USART
     constexpr std::uint8_t UCSR0A = 0xC0;
     constexpr std::uint8_t UCSR0B = 0xC1;
@@ -87,7 +129,7 @@ namespace hal
     constexpr std::uint8_t TTWD6 = 6U;
     constexpr std::uint8_t TTWD7 = 7U;
 
-    // spi
+    // spi registers
     constexpr std::array<std::uint8_t, 1> SPCR = {0x2C + sfr_offset};
     constexpr std::array<std::uint8_t, 1> SPSR = {0x2D + sfr_offset};
     constexpr std::array<std::uint8_t, 1> SPDR = {0x2C + sfr_offset};
@@ -115,34 +157,22 @@ namespace hal
     constexpr std::uint8_t SPDR6 = 6U;
     constexpr std::uint8_t SPDR7 = 7U;
 
-    // ports
-    constexpr std::array<std::uint8_t, 4> ddr = {
-        0x04U + sfr_offset, 0x07U + sfr_offset, 0x0AU + sfr_offset,
-        0x0DU + sfr_offset};
+    // spi ports
 
-    constexpr std::array<std::uint8_t, 4> port = {
-        0x05U + sfr_offset, 0x08U + sfr_offset, 0x0BU + sfr_offset,
-        0x0EU + sfr_offset};
+    constexpr std::array<std::uint8_t, 1> SPI_MOSI_POS = {P[PORT_ID_B][3U]};
+    constexpr std::array<std::uint8_t, 1> SPI_MOSI_PORT = {PORT[PORT_ID_B]};
+    constexpr std::array<std::uint8_t, 1> SPI_MOSI_PIN = {PIN[PORT_ID_B]};
+    constexpr std::array<std::uint8_t, 1> SPI_MOSI_DDR = {DDR[PORT_ID_B]};
 
-    constexpr std::uint8_t ddrb = 0x04U + sfr_offset;
-    constexpr std::uint8_t portb = 0x05U + sfr_offset;
-    constexpr std::uint8_t pinb = 0x03U + sfr_offset;
+    constexpr std::array<std::uint8_t, 1> SPI_MISO_POS = {P[PORT_ID_B][4U]};
+    constexpr std::array<std::uint8_t, 1> SPI_MISO_PORT = {PORT[PORT_ID_B]};
+    constexpr std::array<std::uint8_t, 1> SPI_MISO_PIN = {PIN[PORT_ID_B]};
+    constexpr std::array<std::uint8_t, 1> SPI_MISO_DDR = {DDR[PORT_ID_B]};
 
-    constexpr std::uint8_t ddrc = 0x07U + sfr_offset;
-    constexpr std::uint8_t portc = 0x08U + sfr_offset;
-    constexpr std::uint8_t pinc = 0x06U + sfr_offset;
-
-    constexpr std::uint8_t ddrd = 0x0AU + sfr_offset;
-    constexpr std::uint8_t portd = 0x0BU + sfr_offset;
-    constexpr std::uint8_t pind = 0x09U + sfr_offset;
-
-    constexpr std::uint8_t ddre = 0x0DU + sfr_offset;
-    constexpr std::uint8_t porte = 0x0EU + sfr_offset;
-    constexpr std::uint8_t pine = 0x0CU + sfr_offset;
-
-    // Bits
-    constexpr std::array<std::uint8_t, 8> pbits = {
-        1U, 1U << 1U, 1U << 2U, 1U << 3U, 1U << 4U, 1U << 5U, 1U << 6U, 1U << 7U};
+    constexpr std::array<std::uint8_t, 1> SPI_SCK_POS = {P[PORT_ID_B][5U]};
+    constexpr std::array<std::uint8_t, 1> SPI_SCK_PORT = {PORT[PORT_ID_B]};
+    constexpr std::array<std::uint8_t, 1> SPI_SCK_PIN = {PIN[PORT_ID_B]};
+    constexpr std::array<std::uint8_t, 1> SPI_SCK_DDR = {DDR[PORT_ID_B]};
 
 } // namespace hal
 
