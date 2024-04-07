@@ -51,7 +51,7 @@ namespace hal
     static void reg_reset_bits(Pos &&...pos)
     {
       (_registers[addr]) &=
-          (!static_cast<reg_t>(hal::bit_mask(std::forward<Pos>(pos)...)));
+          (~static_cast<reg_t>(hal::bit_mask(std::forward<Pos>(pos)...)));
       std::cout << "Reg: " << std::to_string(addr) << " set to: " << std::to_string(_registers[addr]) << std::endl;
     }
   };

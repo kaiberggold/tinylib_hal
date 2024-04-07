@@ -51,7 +51,7 @@ namespace hal
     static void reg_reset_bits(Pos &&...pos)
     {
       *reinterpret_cast<volatile addr_t *>(addr) &=
-          (!static_cast<reg_t>(hal::bit_mask(std::forward<Pos>(pos)...)));
+          (~static_cast<reg_t>(hal::bit_mask(std::forward<Pos>(pos)...)));
     }
   };
 

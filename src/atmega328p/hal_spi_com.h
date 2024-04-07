@@ -8,7 +8,7 @@
 namespace hal
 {
 
-    template <typename addr_t, typename reg_t, reg_t bus_idx, std::uint8_t port_idx, reg_t pin_idx, std::uint8_t clock_scaling>
+    template <typename addr_t, typename reg_t, reg_t bus_idx, std::uint8_t port_idx, reg_t pin_idx, std::uint8_t clock_scaling, std::uint8_t spi_mode, std::uint8_t data_order>
     struct HalSpiCom
     {
 
@@ -29,7 +29,20 @@ namespace hal
             HalRegAccess<addr_t, reg_t, hal::SPI_SCK_DDR[bus_idx]>::reg_set_bits(hal::SPI_SCK_POS[bus_idx]);
 
             // Polarity??
+            reg_t tmp = HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::get_reg();
+            tmp &= ~(UINT8_C(1 << hal::CPOL || 1 << hal::CPHA));
+            tmp |= spi_mode && UINT8_C(3) << 2;
+            HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_set(tmp);
 
+            // DORD
+            if (data_order)
+            {
+                HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_set_bits(hal::DORD);
+            }
+            else
+            {
+                HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_reset_bits(hal::DORD);
+            }
             // prescaler
             switch (clock_scaling)
             {
@@ -42,8 +55,8 @@ namespace hal
                 HalRegAccess<addr_t, reg_t, hal::SPSR[bus_idx]>::reg_reset_bits(hal::SPI2X);
                 break;
             case 8:
-                HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_set_bits(hal::SPR0);
-                HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_reset_bits(hal::SPR1);
+                HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_reset_bits(hal::SPR0);
+                HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_set_bits(hal::SPR1);
                 HalRegAccess<addr_t, reg_t, hal::SPSR[bus_idx]>::reg_set_bits(hal::SPI2X);
                 break;
             case 16:
@@ -52,18 +65,16 @@ namespace hal
                 HalRegAccess<addr_t, reg_t, hal::SPSR[bus_idx]>::reg_reset_bits(hal::SPI2X);
                 break;
             case 32:
-                HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_reset_bits(hal::SPR0);
-                HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_set_bits(hal::SPR1);
+                HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_set_bits(hal::SPR0);
+                HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_reset_bits(hal::SPR1);
                 HalRegAccess<addr_t, reg_t, hal::SPSR[bus_idx]>::reg_set_bits(hal::SPI2X);
                 break;
             case 64:
-                HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_set_bits(hal::SPR0);
-                HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_set_bits(hal::SPR1);
+                HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_set_bits(hal::SPR0, hal::SPR1);
                 HalRegAccess<addr_t, reg_t, hal::SPSR[bus_idx]>::reg_set_bits(hal::SPI2X);
                 break;
             case 128:
-                HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_set_bits(hal::SPR0);
-                HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_set_bits(hal::SPR1);
+                HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_set_bits(hal::SPR0, hal::SPR1);
                 HalRegAccess<addr_t, reg_t, hal::SPSR[bus_idx]>::reg_reset_bits(hal::SPI2X);
                 break;
             }
