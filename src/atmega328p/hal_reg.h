@@ -132,7 +132,7 @@ namespace hal
     // spi registers
     constexpr std::array<std::uint8_t, 1> SPCR = {0x2C + sfr_offset};
     constexpr std::array<std::uint8_t, 1> SPSR = {0x2D + sfr_offset};
-    constexpr std::array<std::uint8_t, 1> SPDR = {0x2C + sfr_offset};
+    constexpr std::array<std::uint8_t, 1> SPDR = {0x2E + sfr_offset};
 
     // spi bits
     constexpr std::uint8_t SPR0 = 0U;
