@@ -176,8 +176,8 @@ namespace hal
 
     // timers
     constexpr std::array<std::uint8_t, 3> TCCR134A = {0x80U, 0x90U, 0xA0U};
-    constexpr std::array<std::uint8_t, 3> TCCR134B = {0x81U, 0x91U, 0xA1U);
-    constexpr std::array<std::uint8_t, 3> TCCR134C = (0x82U, 0x92U, 0xA2U);
+    constexpr std::array<std::uint8_t, 3> TCCR134B = {0x81U, 0x91U, 0xA1U};
+    constexpr std::array<std::uint8_t, 3> TCCR134C = {0x82U, 0x92U, 0xA2U};
 
     // timer bits
     constexpr std::uint8_t WGM10 = 0;
@@ -197,18 +197,18 @@ namespace hal
     constexpr std::uint8_t FOC1B = 6U;
     constexpr std::uint8_t FOC1A = 7U;
 
-    constexpr std::array<std::uint16_t, 3> TCNT134 = (0x84U, 0x94U, 0xA4U);
-    constexpr std::array<std::uint8_t, 3> TCNT134L = (0x84U, 0x94U, 0xA4U);
-    constexpr std::array<std::uint8_t, 3> TCNT134H = (0x85U, 0x95U, 0xA5U);
-    constexpr std::array<std::uint16_t, 3> ICR134 = (0x86U, 0x96U, 0xA6U);
-    constexpr std::array<std::uint8_t, 3> ICR134L = (0x86U, 0x96U, 0xA6U);
-    constexpr std::array<std::uint8_t, 3> ICR134H = (0x87U, 0x97U, 0xA7U);
-    constexpr std::array<std::uint16_t, 3> OCR134A = (0x88U, 0x98U, 0xA8U);
-    constexpr std::array<std::uint8_t, 3> OCR134AL = (0x88U, 0x98U, 0xA8U);
-    constexpr std::array<std::uint8_t, 3> OCR134AH = (0x89U, 0x99U, 0xA9U);
-    constexpr std::array<std::uint16_t, 3> OCR134B = (0x8AU, 0x9AU, 0xAAU);
-    constexpr std::array<std::uint8_t, 3> OCR134BL = (0x8AU, 0x9AU, 0xAAU);
-    constexpr std::array<std::uint8_t, 3> OCR134BH = (0x8BU, 0x9BU, 0xABU);
+    constexpr std::array<std::uint16_t, 3> TCNT134 = {0x84U, 0x94U, 0xA4U};
+    constexpr std::array<std::uint8_t, 3> TCNT134L = {0x84U, 0x94U, 0xA4U};
+    constexpr std::array<std::uint8_t, 3> TCNT134H = {0x85U, 0x95U, 0xA5U};
+    constexpr std::array<std::uint16_t, 3> ICR134 = {0x86U, 0x96U, 0xA6U};
+    constexpr std::array<std::uint8_t, 3> ICR134L = {0x86U, 0x96U, 0xA6U};
+    constexpr std::array<std::uint8_t, 3> ICR134H = {0x87U, 0x97U, 0xA7U};
+    constexpr std::array<std::uint16_t, 3> OCR134A = {0x88U, 0x98U, 0xA8U};
+    constexpr std::array<std::uint8_t, 3> OCR134AL = {0x88U, 0x98U, 0xA8U};
+    constexpr std::array<std::uint8_t, 3> OCR134AH = {0x89U, 0x99U, 0xA9U};
+    constexpr std::array<std::uint16_t, 3> OCR134B = {0x8AU, 0x9AU, 0xAAU};
+    constexpr std::array<std::uint8_t, 3> OCR134BL = {0x8AU, 0x9AU, 0xAAU};
+    constexpr std::array<std::uint8_t, 3> OCR134BH = {0x8BU, 0x9BU, 0xABU};
 
 } // namespace hal
 

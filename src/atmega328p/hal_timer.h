@@ -6,7 +6,7 @@
 namespace hal
 {
     template <typename addr_t, typename reg_t, const std::uint8_t timer_idx>
-    struct HalTimer : public HalRegAccess<addr_t, reg_t, TIMER[timer_idx]>
+    struct HalTimer : public HalRegAccess<addr_t, std::uint8_t, timer_idx>
     {
         static void isr_ena()
         {

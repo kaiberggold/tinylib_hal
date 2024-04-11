@@ -1,4 +1,6 @@
-  #include <hal_reg.h>
+#ifndef HAL_REG_ACCESS
+#define HAL_REG_ACCESS
+#include <hal_reg.h>
 #include <stdbool.h>
 #include "hal_utils.h"
 
@@ -52,5 +54,5 @@ namespace hal
     }
   };
 
-} // namespace hal
-#endif // MCAL_REG_ACCESS
+}
+#endif
