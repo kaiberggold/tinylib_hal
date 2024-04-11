@@ -1,8 +1,6 @@
 #ifndef HAL_I2C_COM
 #define HAL_I2C_COM
 #include <cstdint>
-#include <hal_reg.h>
-#include <hal_reg_access.h>
 
 namespace hal
 {

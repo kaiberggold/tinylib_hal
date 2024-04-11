@@ -116,6 +116,46 @@ namespace hal
     constexpr std::array<std::uint8_t, 8> pbits = {
         1U, 1U << 1U, 1U << 2U, 1U << 3U, 1U << 4U, 1U << 5U, 1U << 6U, 1U << 7U};
 
+    // timers
+    constexpr std::array<std::uint8_t, 3> TCCR134A = {0x80U, 0x90U, 0xA0U};
+    constexpr std::array<std::uint8_t, 3> TCCR134B = {0x81U, 0x91U, 0xA1U);
+    constexpr std::array<std::uint8_t, 3> TCCR134C = (0x82U, 0x92U, 0xA2U);
+
+    // timer bits
+    constexpr std::uint8_t WGM10 = 0;
+    constexpr std::uint8_t WGM11 = 1;
+    constexpr std::uint8_t COM1B0 = 4;
+    constexpr std::uint8_t COM1B1 = 5;
+    constexpr std::uint8_t COM1A0 = 6;
+    constexpr std::uint8_t COM1A1 = 7;
+
+    constexpr std::uint8_t CS10 = 0;
+    constexpr std::uint8_t CS11 = 1;
+    constexpr std::uint8_t CS12 = 2;
+    constexpr std::uint8_t WGM12 = 3;
+    constexpr std::uint8_t WGM13 = 4;
+    constexpr std::uint8_t ICES1 = 6;
+    constexpr std::uint8_t ICNC1 = 7;
+    constexpr std::uint8_t FOC1B = 6U;
+    constexpr std::uint8_t FOC1A = 7U;
+
+    constexpr std::array<std::uint16_t, 3> TCNT134 = (0x84U, 0x94U, 0xA4U);
+    constexpr std::array<std::uint8_t, 3> TCNT134L = (0x84U, 0x94U, 0xA4U);
+    constexpr std::array<std::uint8_t, 3> TCNT134H = (0x85U, 0x95U, 0xA5U);
+    constexpr std::array<std::uint16_t, 3> ICR134 = (0x86U, 0x96U, 0xA6U);
+    constexpr std::array<std::uint8_t, 3> ICR134L = (0x86U, 0x96U, 0xA6U);
+    constexpr std::array<std::uint8_t, 3> ICR134H = (0x87U, 0x97U, 0xA7U);
+    constexpr std::array<std::uint16_t, 3> OCR134A = (0x88U, 0x98U, 0xA8U);
+    constexpr std::array<std::uint8_t, 3> OCR134AL = (0x88U, 0x98U, 0xA8U);
+    constexpr std::array<std::uint8_t, 3> OCR134AH = (0x89U, 0x99U, 0xA9U);
+    constexpr std::array<std::uint16_t, 3> OCR134B = (0x8AU, 0x9AU, 0xAAU);
+    constexpr std::array<std::uint8_t, 3> OCR134BL = (0x8AU, 0x9AU, 0xAAU);
+    constexpr std::array<std::uint8_t, 3> OCR134BH = (0x8BU, 0x9BU, 0xABU);
+
+#define OCR1B _SFR_MEM16(0x8A)
+
+#define OCR1BL _SFR_MEM8(0x8A)
+
 } // namespace hal
 
 #endif // HAL_REG

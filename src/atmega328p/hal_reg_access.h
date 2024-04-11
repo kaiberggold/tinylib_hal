@@ -1,7 +1,4 @@
-#ifndef MCAL_REG_ACCESS
-#define MCAL_REG_ACCESS
-#include <cstdint>
-#include <hal_reg.h>
+  #include <hal_reg.h>
 #include <stdbool.h>
 #include "hal_utils.h"
 
