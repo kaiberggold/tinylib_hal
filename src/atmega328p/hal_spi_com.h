@@ -30,8 +30,8 @@ namespace hal
 
             // Polarity??
             reg_t tmp = HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::get_reg();
-            tmp &= ~(UINT8_C(1 << hal::CPOL || 1 << hal::CPHA));
-            tmp |= spi_mode && UINT8_C(3) << 2;
+            tmp &= ~(UINT8_C(1 << hal::CPOL | 1 << hal::CPHA));
+            tmp |= spi_mode & UINT8_C(3) << 2;
             HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_set(tmp);
 
             // DORD
