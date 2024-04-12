@@ -8,12 +8,17 @@ namespace hal
     template <typename addr_t, typename reg_t, const std::uint8_t timer_idx>
     struct HalTimer : public HalRegAccess<addr_t, std::uint8_t, timer_idx>
     {
-        static void isr_ena()
+        static void compare_match_init()
         {
-            // set to output
-            // HalRegAccess<addr_t, reg_t, DDR[port_idx]>::reg_or(val);
+            // TCCR1A = 0x00;         // OC2A and OC2B disconnected; Wave Form Generator: Normal Mode
+            // TCCR1B = (1 << CS12);  // prescaler = 256; alternative: 1024 (set CS12 and CS10)
+            // TIMSK1 = (1 << TOIE1); // interrupt when TCNT1 is overflowed
+            // TCNT1 = counterStart;
+            HalRegAccess<addr_t, reg_t, hal::TCCR134A[0]>::reg_set(0x00U);
+            HalRegAccess<addr_t, reg_t, hal::TCCR134B[0]>::reg_set_bits_only(hal::CS12);
+            // HalRegAccess<addr_t, reg_t, hal::TIMSK134[0]>::reg_set_bits_only(hal::TOIE1);
+            // HalRegAccess<addr_t, reg_t, hal::TCNT134[0]>::reg_set_
         }
     };
-
 }
 #endif

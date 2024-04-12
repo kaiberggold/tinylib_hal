@@ -120,9 +120,24 @@ namespace hal
     constexpr std::array<std::uint8_t, 3> TCCR134A = {0x80U, 0x90U, 0xA0U};
     constexpr std::array<std::uint8_t, 3> TCCR134B = {0x81U, 0x91U, 0xA1U);
     constexpr std::array<std::uint8_t, 3> TCCR134C = (0x82U, 0x92U, 0xA2U);
+    constexpr std::array<std::uint8_t, 3> TIMSK01234 _SFR_MEM8(0x6E)
+#define TOIE0 0
+#define OCIE0A 1
+#define OCIE0B 2
 
-    // timer bits
-    constexpr std::uint8_t WGM10 = 0;
+#define TIMSK1 _SFR_MEM8(0x6F)
+#define TOIE1 0
+#define OCIE1A 1
+#define OCIE1B 2
+#define ICIE1 5
+
+#define TIMSK2 _SFR_MEM8(0x70)
+#define TOIE2 0
+#define OCIE2A 1
+#define OCIE2B 2
+
+        // timer bits
+        constexpr std::uint8_t WGM10 = 0;
     constexpr std::uint8_t WGM11 = 1;
     constexpr std::uint8_t COM1B0 = 4;
     constexpr std::uint8_t COM1B1 = 5;
