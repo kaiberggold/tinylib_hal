@@ -9,7 +9,6 @@ namespace hal
 
     struct TimerT : public ifc::TimerIf<TimerT<addr_t, reg_t, timer_t, timer_idx>, addr_t, reg_t, timer_t, timer_idx>
     {
-        // struct HalTimer : public HalRegAccess<addr_t, std::uint8_t, timer_idx>
         static void init(timer_t start_time)
         {
             // TCCR1A = 0x00;         // OC2A and OC2B disconnected; Wave Form Generator: Normal Mode
@@ -20,6 +19,13 @@ namespace hal
             HalRegAccess<addr_t, reg_t, hal::TCCR134B[0]>::reg_set_bits_only(hal::CS12);
             HalRegAccess<addr_t, reg_t, hal::TIMSK01234[1]>::reg_set_bits_only(hal::TOIE1);
             HalRegAccess<addr_t, std::uint16_t, hal::TCNT134[0]>::reg_set(start_time);
+        }
+        static void irq_reset(timer_t start_time)
+        {
+            std::uint8_t sreg = hal::HalRegAccess<std::uint8_t, std::uint8_t, hal::SREG>::get_reg();
+            hal::disable_all_interrupts();
+            hal::HalRegAccess<std::uint16_t, std::uint16_t, hal::TCNT134[0]>::reg_set(start_time);
+            hal::HalRegAccess<std::uint8_t, std::uint8_t, hal::SREG>::reg_set(sreg);
         }
     };
 }
