@@ -10,7 +10,7 @@ namespace hal
     constexpr std::uint8_t sfr_offset = 0x20U;
 
     // Register
-    constexpr std::uint8_t SREGa = 0x3FU;
+    constexpr std::uint8_t SREG = 0x3FU;
 
     // port indices
     constexpr std::uint8_t PORT_ID_B = 0U;
