@@ -2,13 +2,15 @@
 #define HAL_TIMER
 #include "hal_reg.h"
 #include <hal_reg_access.h>
-
+#include <timer_if.h>
 namespace hal
 {
-    template <typename addr_t, typename reg_t, const std::uint8_t timer_idx>
-    struct HalTimer : public HalRegAccess<addr_t, std::uint8_t, timer_idx>
+    template <typename addr_t, typename reg_t, typename timer_t, timer_t timer_idx>
+
+    struct TimerT : public ifc::TimerIf<TimerT<addr_t, reg_t, timer_t, timer_idx>, addr_t, reg_t, timer_t, timer_idx>
     {
-        static void init()
+        // struct HalTimer : public HalRegAccess<addr_t, std::uint8_t, timer_idx>
+        static void init(timer_t start_time)
         {
             // TCCR1A = 0x00;         // OC2A and OC2B disconnected; Wave Form Generator: Normal Mode
             // TCCR1B = (1 << CS12);  // prescaler = 256; alternative: 1024 (set CS12 and CS10)
@@ -17,7 +19,7 @@ namespace hal
             HalRegAccess<addr_t, reg_t, hal::TCCR134A[0]>::reg_set(0x00U);
             HalRegAccess<addr_t, reg_t, hal::TCCR134B[0]>::reg_set_bits_only(hal::CS12);
             HalRegAccess<addr_t, reg_t, hal::TIMSK01234[1]>::reg_set_bits_only(hal::TOIE1);
-            HalRegAccess<addr_t, std::uint16_t, hal::TCNT134[0]>::reg_set(0xAA00U);
+            HalRegAccess<addr_t, std::uint16_t, hal::TCNT134[0]>::reg_set(start_time);
         }
     };
 }

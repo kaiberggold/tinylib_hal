@@ -13,6 +13,7 @@ set( sources
 add_avr_library (hal ${sources})
 
 target_include_directories (hal PUBLIC include)
+target_include_directories (hal PUBLIC ../tinylib_utils/include)
 # some .h files are in the src directory
 target_include_directories (hal PUBLIC src)
 target_include_directories (hal PUBLIC src/${HAL_PATH})
