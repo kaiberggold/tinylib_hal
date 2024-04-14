@@ -9,6 +9,9 @@ namespace hal
     // offset
     constexpr std::uint8_t sfr_offset = 0x20U;
 
+    // Register
+    constexpr std::uint8_t SREGa = 0x3FU;
+
     // port indices
     constexpr std::uint8_t PORT_ID_B = 0U;
     constexpr std::uint8_t PORT_ID_C = 1U;
@@ -178,7 +181,7 @@ namespace hal
     constexpr std::array<std::uint8_t, 3> TCCR134A = {0x80U, 0x90U, 0xA0U};
     constexpr std::array<std::uint8_t, 3> TCCR134B = {0x81U, 0x91U, 0xA1U};
     constexpr std::array<std::uint8_t, 3> TCCR134C = {0x82U, 0x92U, 0xA2U};
-
+    constexpr std::array<std::uint8_t, 5> TIMSK01234 = {0x6EU, 0x6FU, 0x70U, 0x71U, 0x72U};
     // timer bits
     constexpr std::uint8_t WGM10 = 0;
     constexpr std::uint8_t WGM11 = 1;
@@ -197,7 +200,7 @@ namespace hal
     constexpr std::uint8_t FOC1B = 6U;
     constexpr std::uint8_t FOC1A = 7U;
 
-    constexpr std::array<std::uint16_t, 3> TCNT134 = {0x84U, 0x94U, 0xA4U};
+    constexpr std::array<std::uint8_t, 3> TCNT134 = {0x84U, 0x94U, 0xA4U};
     constexpr std::array<std::uint8_t, 3> TCNT134L = {0x84U, 0x94U, 0xA4U};
     constexpr std::array<std::uint8_t, 3> TCNT134H = {0x85U, 0x95U, 0xA5U};
     constexpr std::array<std::uint16_t, 3> ICR134 = {0x86U, 0x96U, 0xA6U};
@@ -209,6 +212,19 @@ namespace hal
     constexpr std::array<std::uint16_t, 3> OCR134B = {0x8AU, 0x9AU, 0xAAU};
     constexpr std::array<std::uint8_t, 3> OCR134BL = {0x8AU, 0x9AU, 0xAAU};
     constexpr std::array<std::uint8_t, 3> OCR134BH = {0x8BU, 0x9BU, 0xABU};
+
+    constexpr std::uint8_t TOIE0 = 0U;
+    constexpr std::uint8_t OCIE0A = 1U;
+    constexpr std::uint8_t OCIE0B = 2U;
+
+    constexpr std::uint8_t TOIE1 = 0U;
+    constexpr std::uint8_t OCIE1A = 1U;
+    constexpr std::uint8_t OCIE1B = 2U;
+    constexpr std::uint8_t ICIE1 = 5U;
+
+    constexpr std::uint8_t TOIE2 = 0U;
+    constexpr std::uint8_t OCIE2A = 1U;
+    constexpr std::uint8_t OCIE2B = 2U;
 
 } // namespace hal
 
