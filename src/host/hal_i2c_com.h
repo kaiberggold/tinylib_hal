@@ -6,7 +6,7 @@
 
 namespace hal
 {
-    template <typename addr_t, typename reg_t, reg_t bus_idx>
+    template <typename addr_t, typename reg_t>
     struct HalI2CCom
     {
         static void init(std::uint32_t freq)
