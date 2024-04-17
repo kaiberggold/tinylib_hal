@@ -81,6 +81,11 @@ namespace hal
             HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_set_bits(hal::MSTR, hal::SPE);
         }
 
+        static constexpr void _enable_interrupt()
+        {
+            HalRegAccess<addr_t, reg_t, hal::SPCR[bus_idx]>::reg_set_bits(hal::SPIE);
+        }
+
         static void send(reg_t data)
         {
             HalRegAccess<addr_t, reg_t, hal::SPDR[bus_idx]>::reg_set(static_cast<reg_t>(data));
