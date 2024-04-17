@@ -8,7 +8,7 @@
 namespace hal
 {
 
-    template <typename addr_t, typename reg_t, reg_t bus_idx, std::uint8_t port_idx, reg_t pin_idx, std::uint8_t clock_scaling, std::uint8_t spi_mode, std::uint8_t data_order>
+    template <typename addr_t, typename reg_t, reg_t bus_idx, reg_t clock_scaling, reg_t spi_mode, reg_t data_order>
     struct HalSpiCom
     {
 
@@ -17,10 +17,9 @@ namespace hal
             static_assert(clock_scaling == 2 || clock_scaling == 4 || clock_scaling == 8 || clock_scaling == 16 || clock_scaling == 32 || clock_scaling == 64 || clock_scaling == 128, "clock_scaling must be 2,4,8,16,32,64 or 128");
 
             // CS to high
-            HalRegAccess<addr_t, reg_t, hal::PORT[port_idx]>::reg_set_bits(pin_idx);
+            // HalRegAccess<addr_t, reg_t, hal::PORT[0]>::reg_set_bits(2);
             // CS to output
-            HalRegAccess<addr_t, reg_t, hal::DDR[port_idx]>::reg_set_bits(pin_idx);
-
+            // HalRegAccess<addr_t, reg_t, hal::DDR[0]>::reg_set_bits(2);
             // MOSI to output
             HalRegAccess<addr_t, reg_t, hal::SPI_MOSI_DDR[bus_idx]>::reg_set_bits(hal::SPI_MOSI_POS[bus_idx]);
             // enable MISO pullup
