@@ -1,2 +1,2 @@
-# mcal_avr_328p
+# hal
 microcontroller abstraction layer for ATMega328p
