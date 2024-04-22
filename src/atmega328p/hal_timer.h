@@ -7,9 +7,9 @@ namespace hal
 {
     template <typename addr_t, typename reg_t, typename timer_t, timer_t timer_idx>
 
-    struct TimerT : public ifc::TimerIf<TimerT<addr_t, reg_t, timer_t, timer_idx>, addr_t, reg_t, timer_t, timer_idx>
+    struct TimerT : public utils::TimerIf<TimerT<addr_t, reg_t, timer_t, timer_idx>, addr_t, reg_t, timer_t, timer_idx>
     {
-        static void init(timer_t start_time)
+        static void init_impl(timer_t start_time)
         {
             // TCCR1A = 0x00;         // OC2A and OC2B disconnected; Wave Form Generator: Normal Mode
             // TCCR1B = (1 << CS12);  // prescaler = 256; alternative: 1024 (set CS12 and CS10)
@@ -20,7 +20,7 @@ namespace hal
             HalRegAccess<addr_t, reg_t, hal::TIMSK01234[1]>::reg_set_bits_only(hal::TOIE1);
             HalRegAccess<addr_t, std::uint16_t, hal::TCNT134[0]>::reg_set(start_time);
         }
-        static void irq_reset(timer_t start_time)
+        static void irq_reset_impl(timer_t start_time)
         {
             std::uint8_t sreg = hal::HalRegAccess<std::uint8_t, std::uint8_t, hal::SREG>::get_reg();
             hal::disable_all_interrupts();
