@@ -31,6 +31,7 @@ namespace hal
       return *reinterpret_cast<volatile addr_t *>(addr);
     } // perfect forwarding of paramters, since unpacking only for the bits
     template <typename... Pos>
+
     static void reg_set_bits(Pos &&...pos)
     {
       *reinterpret_cast<volatile addr_t *>(addr) |=

@@ -17,6 +17,12 @@ namespace hal
       // set to output
       HalRegAccess<addr_t, reg_t, DDR[port_idx]>::reg_or(val);
     }
+
+    static void set_to_in_mask(reg_t val)
+    {
+      // set to input
+      HalRegAccess<addr_t, reg_t, DDR[port_idx]>::reg_and(~val);
+    }
   };
 
 } // namespace hal
