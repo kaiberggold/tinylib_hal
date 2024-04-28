@@ -13,7 +13,7 @@ namespace hal
     static void set_to_out_mask(reg_t val)
     {
       // Set port value to 0
-      HalRegAccess<addr_t, reg_t, PORT[port_idx]>::reg_and(val);
+      HalRegAccess<addr_t, reg_t, PORT[port_idx]>::reg_and(~val);
       // set to output
       HalRegAccess<addr_t, reg_t, DDR[port_idx]>::reg_or(val);
     }

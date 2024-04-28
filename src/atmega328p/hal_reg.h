@@ -233,12 +233,12 @@ namespace hal
     constexpr std::uint8_t PCIE1 = 1U;
     constexpr std::uint8_t PCIE2 = 2U;
 
-    constexpr std::uint8_t PPCIFR = 0x1BU + sfr_offset;
+    constexpr std::uint8_t PCIFR = 0x3BU;
     constexpr std::uint8_t PCIF0 = 0U;
     constexpr std::uint8_t PCIF1 = 1U;
     constexpr std::uint8_t PCIF2 = 2U;
 
-    constexpr std::array<std::uint8_t, 4> PCMSK = {0x6BU + sfr_offset, 0x6CU + sfr_offset, 0x6DU + sfr_offset, 0x73U + sfr_offset};
+    constexpr std::array<std::uint8_t, 4> PCMSK = {0x6BU, 0x6CU, 0x6DU, 0x73U};
     constexpr std::uint8_t PCINT0 = 0U;
     constexpr std::uint8_t PCINT1 = 1U;
     constexpr std::uint8_t PCINT2 = 2U;
