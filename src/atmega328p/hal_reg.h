@@ -226,6 +226,45 @@ namespace hal
     constexpr std::uint8_t OCIE2A = 1U;
     constexpr std::uint8_t OCIE2B = 2U;
 
+    // Pin change interrupts
+
+    constexpr std::uint8_t PCICR = 0x68U;
+    constexpr std::uint8_t PCIE0 = 0U;
+    constexpr std::uint8_t PCIE1 = 1U;
+    constexpr std::uint8_t PCIE2 = 2U;
+
+    constexpr std::uint8_t PPCIFR = 0x1BU + sfr_offset;
+    constexpr std::uint8_t PCIF0 = 0U;
+    constexpr std::uint8_t PCIF1 = 1U;
+    constexpr std::uint8_t PCIF2 = 2U;
+
+    constexpr std::array<std::uint8_t, 4> PCMSK = {0x6BU + sfr_offset, 0x6CU + sfr_offset, 0x6DU + sfr_offset, 0x73U + sfr_offset};
+    constexpr std::uint8_t PCINT0 = 0U;
+    constexpr std::uint8_t PCINT1 = 1U;
+    constexpr std::uint8_t PCINT2 = 2U;
+    constexpr std::uint8_t PCINT3 = 3U;
+    constexpr std::uint8_t PCINT4 = 4U;
+    constexpr std::uint8_t PCINT5 = 5U;
+    constexpr std::uint8_t PCINT6 = 6U;
+    constexpr std::uint8_t PCINT7 = 7U;
+
+    constexpr std::uint8_t PCINT8 = 0U;
+    constexpr std::uint8_t PCINT9 = 1U;
+    constexpr std::uint8_t PCINT10 = 2U;
+    constexpr std::uint8_t PCINT11 = 3U;
+    constexpr std::uint8_t PCINT12 = 4U;
+    constexpr std::uint8_t PCINT13 = 5U;
+    constexpr std::uint8_t PCINT14 = 6U;
+
+    constexpr std::uint8_t PCINT16 = 0U;
+    constexpr std::uint8_t PCINT17 = 1U;
+    constexpr std::uint8_t PCINT18 = 2U;
+    constexpr std::uint8_t PCINT19 = 3U;
+    constexpr std::uint8_t PCINT20 = 4U;
+    constexpr std::uint8_t PCINT21 = 5U;
+    constexpr std::uint8_t PCINT22 = 6U;
+    constexpr std::uint8_t PCINT23 = 7U;
+
 } // namespace hal
 
 #endif // HAL_REG
