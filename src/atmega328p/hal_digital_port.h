@@ -23,6 +23,11 @@ namespace hal
       // set to input
       HalRegAccess<addr_t, reg_t, DDR[port_idx]>::reg_and(~val);
     }
+
+    static reg_t get_port()
+    {
+      return HalRegAccess<addr_t, reg_t, PIN[port_idx]>::get_reg();
+    }
   };
 
 } // namespace hal
