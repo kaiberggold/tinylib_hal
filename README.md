@@ -1,2 +1,2 @@
 # hal
-microcontroller abstraction layer for ATMega328p
+hardware abstraction layer
